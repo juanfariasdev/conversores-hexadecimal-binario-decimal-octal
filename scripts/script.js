@@ -1,12 +1,22 @@
 const body = document.getElementById("body");
-async function openModal() {
+
+async function createModal() {
   const url = "components/modal.html";
 
-  await fetch(url)
-    .then((value) => value.text())
-    .then((value) => (body.innerHTML += value));
+  return await fetch(url).then((value) => value.text());
 }
-openModal();
+
+async function openModal(results) {
+  const modalHtml = await createModal();
+  var parser = new DOMParser();
+  var doc = parser.parseFromString(modalHtml, "text/html");
+
+  const resultsModal = doc.getElementById("results");
+
+  resultsModal.innerHTML = results;
+
+  body.innerHTML += doc.body.innerHTML;
+}
 
 function removeModal() {
   const modalResult = document.getElementById("modalResult");
@@ -139,6 +149,15 @@ function calcValue(type, value) {
   return calc.Result;
 }
 
+function resultsCalcModal(arr, type, input) {
+  let texts = `<p class="font-bold">O ${type}: <span class="font-medium">${input}</span></p>`;
+  texts += arr.map(
+    (item) =>
+      `<p class="font-bold">EM ${item.message}: <span class="font-medium">${item.value}</span></p>`
+  );
+  return texts;
+}
+
 document.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -147,6 +166,8 @@ document.addEventListener("submit", (event) => {
   const type = event.target.id;
 
   const calc = calcValue(type, input.value);
+  openModal(resultsCalcModal(calc, type, input.value));
+
   console.log(calc);
   input.value = "";
 });
