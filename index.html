@@ -8,90 +8,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body
-    class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+    class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-screen flex flex-col"
     style="font-family: 'Lato', sans-serif"
-    id="body"
   >
-    <main class="flex min-h-screen justify-center items-center">
-      <div class="flex flex-col w-full">
-        <h2 class="text-center text-white font-bold text-3xl">Conversores</h2>
-        <div class="flex flex-col gap-2 lg:flex-row w-full p-5 justify-center">
-          <div
-            class="border-t-4 border-red-500 bg-white shadow-md rounded lg:max-w-[450px] p-4 w-full justify-center"
-          >
-            <form class="flex flex-col gap-3" id="Decimal">
-              <h2 class="text-xl font-bold text-center">
-                Conversor de Decimal
-              </h2>
-              <input
-                placeholder="Digite seu valor em Decimal"
-                class="p-2 bg-gray-100 border-b-2 border-gray-300 w-full placeholder:text-gray-600"
-              />
-              <button
-                class="text-white bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded w-full font-bold transition"
-              >
-                Converter
-              </button>
-            </form>
-          </div>
-          <div
-            class="border-t-4 border-yellow-500 bg-white shadow-md rounded lg:max-w-[450px] p-4 w-full"
-          >
-            <form class="flex flex-col gap-3" id="Binario">
-              <h2 class="text-xl font-bold text-center">
-                Conversor de Binário
-              </h2>
-              <input
-                placeholder="Digite seu valor em Binário"
-                class="p-2 bg-gray-100 border-b-2 border-gray-300 w-full placeholder:text-gray-600"
-              />
-
-              <button
-                class="text-white bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded w-full font-bold transition"
-              >
-                Converter
-              </button>
-            </form>
-          </div>
-          <div
-            class="border-t-4 border-green-500 bg-white shadow-md rounded lg:max-w-[450px] p-4 w-full"
-          >
-            <form class="flex flex-col gap-3" id="Hexadecimal">
-              <h2 class="text-xl font-bold text-center">
-                Conversor de Hexadecimal
-              </h2>
-              <input
-                placeholder="Digite seu valor em Hexadecimal"
-                class="p-2 bg-gray-100 border-b-2 border-gray-300 w-full placeholder:text-gray-600"
-              />
-
-              <button
-                class="text-white bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded w-full font-bold transition"
-              >
-                Converter
-              </button>
-            </form>
-          </div>
-          <div
-            class="border-t-4 border-green-500 bg-white shadow-md rounded lg:max-w-[450px] p-4 w-full"
-          >
-            <form class="flex flex-col gap-3" id="Octal">
-              <h2 class="text-xl font-bold text-center">Conversor de Octal</h2>
-              <input
-                placeholder="Digite seu valor em Hexadecimal"
-                class="p-2 bg-gray-100 border-b-2 border-gray-300 w-full placeholder:text-gray-600"
-              />
-
-              <button
-                class="text-white bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded w-full font-bold transition"
-              >
-                Converter
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </main>
-    <script src="./scripts/script.js"></script>
+    <nav class="w-full bg-white p-6 opacity-70 flex font-bold gap-6">
+      <a href="about.html">Inicio</a>
+      <a href="converts.html">Converter</a>
+      <a href="developer.html">Desenvolvedores</a>
+    </nav>
+    <main id="body" class="flex-1"></main>
   </body>
+  <script src="./scripts/pagination.js"></script>
+  <script src="./scripts/script.js"></script>
 </html>

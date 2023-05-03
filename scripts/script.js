@@ -1,5 +1,3 @@
-const body = document.getElementById("body");
-
 async function createModal() {
   const url = "components/modal.html";
 
@@ -35,10 +33,13 @@ class Decimal {
     };
   }
   get Hexadecimal() {
-    return { message: "Hexadecimal", value: this.value.toString(16) };
+    return {
+      message: "Hexadecimal",
+      value: parseInt(this.value, 10).toString(16).toUpperCase(),
+    };
   }
   get Octal() {
-    return { message: "Octal", value: this.value.toString(8) };
+    return { message: "Octal", value: parseInt(this.value, 10).toString(8) };
   }
   get Result() {
     const result = [this.Binario, this.Hexadecimal, this.Octal];
@@ -150,21 +151,52 @@ function calcValue(type, value) {
 }
 
 function resultsCalcModal(arr, type, input) {
-  let texts = `<p class="font-bold">O ${type}: <span class="font-medium">${input}</span></p>`;
-  texts += arr.map(
-    (item) =>
-      `<p class="font-bold">EM ${item.message}: <span class="font-medium">${item.value}</span></p>`
-  );
+  let texts = "";
+  texts = `<p class="font-bold">O ${type}: <span class="font-medium">${input}</span></p>`;
+  arr.map((item) => {
+    texts += `<p class="font-bold">Em ${item.message}: <span class="font-medium">${item.value}</span></p>`;
+  });
   return texts;
+}
+
+function isBinary(val) {
+  return val.split("").filter((x) => x == "0" || x == "1").length == val.length;
+}
+function isHex(s) {
+  let n = s.length;
+
+  for (let i = 0; i < n; i++) {
+    let ch = s[i];
+
+    if ((ch < "0" || ch > "9") && (ch < "A" || ch > "F")) {
+      return false;
+    }
+  }
+  return true;
 }
 
 document.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  console.log(event);
   const input = event.target.querySelector("input");
   const type = event.target.id;
 
+  if (type === "Decimal" && isNaN(Number(input.value))) {
+    alert("Digite apenas números decimais!");
+    return;
+  }
+  if (type === "Binario" && !isBinary(input.value)) {
+    alert("Digite apenas números Binário!");
+    return;
+  }
+  if (type === "Hexadecimal" && !isHex(input.value)) {
+    alert("Digite apenas Hexadecimal!");
+    return;
+  }
+  if (type === "Octal" && isNaN(Number(input.value))) {
+    alert("Digite apenas Números no Octal!");
+    return;
+  }
   const calc = calcValue(type, input.value);
   openModal(resultsCalcModal(calc, type, input.value));
 
