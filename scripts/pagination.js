@@ -26,4 +26,4 @@ document.addEventListener("click", (e) => {
     loadPage(el);
   }
 });
-createPage("converts.html");
+createPage("home.html");
