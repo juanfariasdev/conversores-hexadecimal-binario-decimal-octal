@@ -29,17 +29,17 @@ class Decimal {
   get Binario() {
     return {
       message: "Binário",
-      value: (this.value >>> 0).toString(2),
+      value: decimalToBinary(this.value),
     };
   }
   get Hexadecimal() {
     return {
       message: "Hexadecimal",
-      value: parseInt(this.value, 10).toString(16).toUpperCase(),
+      value: decimalToHex(this.value).toUpperCase(),
     };
   }
   get Octal() {
-    return { message: "Octal", value: parseInt(this.value, 10).toString(8) };
+    return { message: "Octal", value: decimalToOctal(this.value, 10) };
   }
   get Result() {
     const result = [this.Binario, this.Hexadecimal, this.Octal];
@@ -56,19 +56,19 @@ class Binario {
   get Decimal() {
     return {
       message: "Decimal",
-      value: parseInt(this.value, 2).toString(10),
+      value: binaryToDecimal(this.value),
     };
   }
   get Hexadecimal() {
     return {
       message: "Hexadecimal",
-      value: parseInt(this.value, 2).toString(16).toUpperCase(),
+      value: binaryToHex(this.value).toUpperCase(),
     };
   }
   get Octal() {
     return {
       message: "Octal",
-      value: parseInt(this.value, 2).toString(8).toUpperCase(),
+      value: binaryToOctal(this.value),
     };
   }
   get Result() {
@@ -83,17 +83,17 @@ class Hexadecimal {
   get Binario() {
     return {
       message: "Binário",
-      value: parseInt(this.value, 16).toString(2),
+      value: hexToBinary(this.value),
     };
   }
   get Decimal() {
     return {
       message: "Decimal",
-      value: parseInt(this.value, 16).toString(10),
+      value: hexToDecimal(this.value),
     };
   }
   get Octal() {
-    return { message: "Octal", value: parseInt(this.value, 16).toString(8) };
+    return { message: "Octal", value: hexToOctal(this.value) };
   }
   get Result() {
     const result = [this.Binario, this.Decimal, this.Octal];
