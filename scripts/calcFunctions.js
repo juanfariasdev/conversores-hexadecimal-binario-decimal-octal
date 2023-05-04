@@ -52,13 +52,15 @@ function decimalToOctal(decimal) {
 function binaryToHex(binary) {
   let hex = "";
   let binaryStr = String(binary);
-  let decimal;
+  let decimal = 0;
   let i;
+
   for (i = binaryStr.length - 1; i >= 0; i--) {
     if (binaryStr.charAt(i) === "1") {
       decimal += Math.pow(2, binaryStr.length - i - 1);
     }
   }
+  console.log(decimal);
   while (decimal > 0) {
     let remainder = decimal % 16;
     if (remainder < 10) {
