@@ -108,19 +108,19 @@ class Octal {
   get Binario() {
     return {
       message: "Binario",
-      value: parseInt(this.value, 8).toString(2),
+      value: octalToBinary(this.value),
     };
   }
   get Decimal() {
     return {
       message: "Decimal",
-      value: parseInt(this.value, 8),
+      value: octalToDecimal(this.value),
     };
   }
   get Hexadecimal() {
     return {
       message: "Hexadecimal",
-      value: parseInt(this.value, 8).toString(16).toUpperCase(),
+      value: octalToHex(this.value).toUpperCase(),
     };
   }
   get Result() {
